@@ -1,11 +1,16 @@
 package com.goeswhere.springdemo;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class Main {
+	@Autowired Printer printer;
+	@Autowired NumberLister lister;
+	@Autowired Fetcher fetcher;
+
 	public void run() {
-		for (int i : new int[] { 1, 2, 3, 4, 5 })
-			System.out.println(i);
+		for (int i : lister)
+			printer.print(fetcher.fetch(i));
 	}
 }
