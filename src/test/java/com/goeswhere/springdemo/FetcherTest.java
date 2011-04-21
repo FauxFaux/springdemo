@@ -11,13 +11,13 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.goeswhere.springdemo.fakes.FakeUrlReader;
+import com.goeswhere.springutils.MagicLoader;
+import com.goeswhere.springutils.WithOverridden;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration({
-	"/spring/test-context.xml",
-	"/spring/test-fakeurl.xml"
-})
+@ContextConfiguration(loader=MagicLoader.class)
+@WithOverridden(FakeUrlReader.class)
 public class FetcherTest {
 	@Autowired Fetcher fetcher;
 	@Autowired FakeUrlReader reader;

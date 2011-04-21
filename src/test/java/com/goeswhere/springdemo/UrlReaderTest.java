@@ -24,12 +24,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.goeswhere.springutils.MagicLoader;
 import com.google.common.collect.Lists;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration({
-	"/spring/test-context.xml"
-})
+@ContextConfiguration(loader=MagicLoader.class)
 public class UrlReaderTest {
 	@Autowired UrlReader reader;
 	private final List<Server> leaked = Lists.newArrayList();
